@@ -18,6 +18,11 @@
     width: 60px;
 }
 
+.pokeImgModul{
+    height: 200px;
+    width: 380px;
+}
+
 #modul{
     position: absolute;
     height: 100vh;
