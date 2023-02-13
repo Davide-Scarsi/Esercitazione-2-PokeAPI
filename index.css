@@ -1,0 +1,35 @@
+.all-centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ICONA */
+.material-symbols-outlined{
+    position: absolute;
+    right: -90px;
+    top: 0;
+    color: white;
+}
+
+
+.pokeImg{
+    height: 40px;
+    width: 60px;
+}
+
+#modul{
+    position: absolute;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, 0.877);
+    z-index: 10;
+}
+
+.box-modul{
+    height: 500px;
+    width: 50%;
+    background-color: white;
+}
+
+
+
