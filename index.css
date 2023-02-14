@@ -12,6 +12,12 @@
     color: white;
 }
 
+/* ERRORE */
+.error{
+    font-size: 35px;
+    color: red;
+}
+
 
 .pokeImg{
     height: 40px;
@@ -24,7 +30,7 @@
 }
 
 #modul{
-    position: absolute;
+    position: fixed;
     height: 100vh;
     background-color: rgba(128, 128, 128, 0.877);
     z-index: 10;

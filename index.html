@@ -21,131 +21,28 @@
 	<!-- HEADER START -->
 	<section class="container">
 		<div class="row d-flex justify-content-center position-relative" id="cardsContainer">
-			<div class="col-12 all-centered">
+			<div class="col-12 all-centered flex-column">
 				<h1 class="display-1">PokeAPI</h1>
+				<div id="SBox" class="d-flex flex-column">
+					<!-- appendChild -->
+					<!-- appendChild -->
+				</div>
 			</div>
 			<div id="modul" class="col-12 all-centered flex-column d-none"> <!-- d-none -->
 
-				<!-- <h1 class="display-1 h1-modul position-relative">Pokemon
+				<h1 class="display-1 h1-modul position-relative">Pokemon
 					<span id="close" class="material-symbols-outlined">
 						close
 					</span>
 				</h1>
 				<div class="box-modul">
-				</div>	 -->
+				</div>	
 
 			</div>
 
 		</div>
 
-		<!-- SCRIPT -->
-		<script>
 
-			// OGGETTI SELEZIONATI
-			let 	SClose 
-			let		SButton
-			let		SModul 
-
-
-			const body = document.body
-
-			const APISource = `https://pokeapi.co/api/v2`
-
-			const pokeContainer = document.getElementById(`cardsContainer`)
-
-
-			const galleryURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/`
-
-			let pokeName = [] // elenco dei pokemon
-
-
-		
-
-
-			for (let i = 1; i < 20; i++) {
-				fetch(`${APISource}/pokemon/${i}`)
-
-				.then((response) => response.json())
-				.then((data) => {
-
-					pokeName.push(data.species.name)
-
-					pokeContainer.innerHTML += `<div  class="card text-black all-centered" style="width: 18rem;">
-							
-							<img class="card-img-top pokeImg " src="${galleryURL}${i}.png" alt="Card image cap">
-							
-							<div class="card-body">
-							<h5 class="card-title">${data.species.name}</h5>
-							<p id="abilities" class="card-text">Abilità: ${data.abilities[0].ability.name} </p>
-							<p id="abilities" class="card-text">Peso: ${data.weight} </p>
-							<p id="abilities" class="card-text">Altezza: ${data.height} </p>
-							<a href="#" confronto="${data.species.name}" class="btn btn-primary button">ABILITÁ</a>
-							</div>
-							</div>`
-					})
-			}
-
-
-
-			fetch(`${APISource}/pokemon/`)
-
-				.then((response) => response.json())
-				.then((data) => {
-
-
-					SClose = document.querySelectorAll("span.close")
-					SButton = document.querySelectorAll("a.button")
-					SModul = document.getElementById(`modul`)
-
-					for (let i = 0; i < SButton.length; i++) {            // CICLARE I PULSANTI ABILITÁ SELEZIONATI
-						SButton[i].addEventListener(`click`, (e) => {
-							SModul.classList.remove('d-none')
-
-							data.results.map((el,i)=>{
-								
-								if(el.name===e.target.attributes.confronto.nodeValue){
-
-									SModul.innerHTML += `<h1 class="display-1 h1-modul position-relative">Pokemon
-																				<span class="material-symbols-outlined close">
-																					close
-																				</span>
-																			</h1>
-																			<div class="box-modul all-centered text-black flex-column">
-																				<h1>${el.name}</h1>
-																				<img class="card-img-top pokeImgModul " src="${galleryURL}${i+1}.png" alt="Card image cap">
-																			</div>`
-								}
-								})
-						
-					
-					SClose = document.querySelectorAll("span.close")
-					
-					
-					for (let i = 0; i < SClose.length; i++){
-						SClose[i].addEventListener(`click`, (e) => {
-							SModul.classList.add('d-none')
-							SModul.innerHTML = ""
-						
-						})}
-							
-						})
-
-					}
-
-				})
-				
-	
-	
-
-			console.log(pokeName);
-
-
-
-
-
-
-
-		</script>
 
 	</section>
 
@@ -179,10 +76,11 @@
 
 
 	<!-- JS SHEET -->
-	<script src="./index.js"></script>
+	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 		crossorigin="anonymous"></script>
+	<script src="./index.js"></script>
 </body>
 
 </html>
