@@ -139,7 +139,7 @@
 }
 
 
-.modal-box{
+#modal-box{
     position: relative;
     background-color: rgba(255, 255, 255);
     height: 500px;
@@ -147,8 +147,16 @@
     border-radius: 20%;
 }
 
+.inner_modal_box{
+    background-color: red;
+    top: 0;
+    height: 50%;
+    width: 50%;
+}
+
 .material-symbols-outlined{
     position: absolute;
+    z-index: 10;
     top: 5%;
     right: 10%;
     font-size: 50px;
