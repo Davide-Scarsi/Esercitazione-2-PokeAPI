@@ -87,7 +87,7 @@ const displayPokemon = (pokemon) => {
 
 		<div id="box" class="col-12 col-md-6 col-lg-4 all-centered ">
 			<div class="box all-centered flex-column text-black ${el.type}"> 
-			<h2 class="pokemon-name">${el.name}-${el.id}</h2>
+			<h2 class="pokemon-name">${el.name}</h2>
 			<img class="card-image" src="${el.image}"/>
 			<span id="${el.id}" class="button material-symbols-outlined i-button">zoom_in</span>
 			</div>
@@ -129,6 +129,7 @@ const populateModalTab = (pokemon) => {
 
 						<h2 class="pokemon-name">${el.name}</h2>
 						<img class="card-image-modal" src="${el.image}"/>
+						<span>ID: ${el.id}</span> 
 						<span>TYPE: ${el.type}</span> 
 						<div class="${el.type} pokemon-type-box-modal"></div>
 						<div class="d-flex flex-column">

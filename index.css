@@ -1,13 +1,19 @@
 :root{
     --normal: rgb(80, 77, 77);
-    --grass: #4fc73f;
-    --fire: red;
+    --grass: #52a846;
+    --fire: rgb(153, 34, 34);
     --poison: #f94bff;
     --flying: #d3c7d3;
     --water: rgb(92, 180, 240);
     --bug: rgb(133, 12, 106);
     --fairy: rgb(239, 240, 161);
     --electric: rgb(240, 240, 5);
+    --ground: rgb(92, 61, 3);
+    --fighting: rgb(100, 16, 30);
+    --psychic: rgb(255, 0, 140);
+    --rock: rgb(66, 56, 42);
+    --steel: rgb(218, 211, 215);
+    --dragon: rgb(0, 255, 179);
 }
 
 .grass_poison{  background: linear-gradient(110deg, var(--grass) 55%, var(--poison) 55%)
@@ -46,10 +52,10 @@
     background: var(--electric)
 }
 .ground{
-    background: rgb(92, 61, 3)
+    background: var(--ground)
 }
 .poison_ground{
-    background: linear-gradient(110deg, var(--poison) , 55%, rgb(92, 61, 3) 55%)
+    background: linear-gradient(110deg, var(--poison) , 55%, var(--ground) 55%)
 }
 .fairy{
     background: var(--fairy)
@@ -64,67 +70,67 @@
     background: linear-gradient(110deg, var(--bug), 55%, var(--grass) 55%)
 }
 .fighting{
-    background: rgb(134, 29, 47)
+    background: var(--fighting)
 }
 .water_fighting{
-    background: linear-gradient(110deg, var(--water) 55%, rgb(134, 29, 47) 55%)
+    background: linear-gradient(110deg, var(--water) 55%, var(--fighting) 55%)
 }
 .psychic{
-    background: rgb(255, 0, 140)
+    background: var(--psychic)
 }
 .water_poison{
     background: linear-gradient(110deg, var(--water) 55%,  var(--poison) 55%)
 }
 .rock_ground{
-    background: linear-gradient(110deg, rgb(70, 57, 38) 55%, rgb(92, 61, 3) 55%)
+    background: linear-gradient(110deg, var(--rock) 55%, var(--ground) 55%)
 }
 .water_psychic{
-    background: linear-gradient(110deg, var(--water) 55%, rgb(255, 0, 140) 55%)
+    background: linear-gradient(110deg, var(--water) 55%, var(--psychic) 55%)
 }
 .electric_steel{
-    background: linear-gradient(110deg, var(--electric) 55%, rgb(218, 211, 215) 55%)
+    background: linear-gradient(110deg, var(--electric) 55%, var(--steel) 55%)
 }
 .water_ice{
-    background: linear-gradient(110deg, var(--water) 55%, rgb(122, 208, 248) 55%)
+    background: linear-gradient(110deg, var(--water) 55%, var(--water) 55%)
 }
 .ghost_poison{
     background: linear-gradient(110deg, rgb(73, 73, 73) 55%,  var(--poison)  55%)
 }
 .grass_psychic{
-    background: linear-gradient(110deg, var(--grass) 55%, rgb(255, 0, 140) 55%)
+    background: linear-gradient(110deg, var(--grass) 55%, var(--psychic) 55%)
 }
 .ground_rock{
-    background: linear-gradient(110deg, rgb(92, 61, 3) 55%, rgb(70, 57, 38) 55%)
+    background: linear-gradient(110deg, var(--ground) 55%, var(--rock) 55%)
 }
 .grass{
     background: var(--grass)
 }
 .psychic_fairy{
-    background: linear-gradient(110deg, rgb(255, 0, 140) 55%, var(--fairy) 55%)
+    background: linear-gradient(110deg, var(--psychic) 55%, var(--fairy) 55%)
 }
 .ice_psychic{
-    background: linear-gradient(110deg, rgb(122, 208, 248) 55%, rgb(255, 0, 140) 55%)
+    background: linear-gradient(110deg, var(--water) 55%, var(--psychic) 55%)
 }
 .water_flying{
     background: linear-gradient(110deg, var(--water) 55%, var(--flying) 55%)
 }
-.rock_water{
-    background: linear-gradient(110deg, rgb(70, 57, 38) 55%, var(--water) 55%)
+.rock_--water{
+    background: linear-gradient(110deg, var(--rock) 55%, var(--water) 55%)
 }
 .rock_flying{
-    background: linear-gradient(110deg, rgb(70, 57, 38) 55%, var(--flying) 55%)
+    background: linear-gradient(110deg, var(--rock) 55%, var(--flying) 55%)
 }
 .ice_flying{
-    background: linear-gradient(110deg, rgb(122, 208, 248) 55%, var(--flying) 55%)
+    background: linear-gradient(110deg, var(--water) 55%, var(--flying) 55%)
 }
 .electric_flying{
     background: linear-gradient(110deg, var(--electric) 55%, var(--flying) 55%)
 }
 .dragon{
-    background: rgb(0, 255, 179)
+    background: var(--dragon)
 }
 .dragon_flying{
-    background: linear-gradient(110deg, rgb(0, 255, 179) 55%, var(--flying) 55%)
+    background: linear-gradient(110deg, var(--dragon) 55%, var(--flying) 55%)
 }
 
 
