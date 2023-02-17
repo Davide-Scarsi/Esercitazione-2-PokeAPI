@@ -13,7 +13,7 @@
 .grass_poison{  background: linear-gradient(110deg, var(--grass) 55%, var(--poison) 55%)
 }
 .fire{
-    background: var(--fire)
+    background: var(--fire);
 }
 .fire_flying{
     background: linear-gradient(110deg, var(--fire) 55%, var(--flying) 55%)
@@ -61,7 +61,7 @@
     background: linear-gradient(110deg, var(--poison) , 55%, var(--flying) 55%)
 }
 .bug_grass{
-    background: linear-gradient(110deg, var(--bug), 55%, rgb(50, 148, 5) 55%)
+    background: linear-gradient(110deg, var(--bug), 55%, var(--grass) 55%)
 }
 .fighting{
     background: rgb(134, 29, 47)
@@ -128,12 +128,32 @@
 }
 
 
-
 .all-centered{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.populate-container{
+   padding: 0px 100px ;
+}
+
+.page-button-bar{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.page-button{
+    border-radius: 20%;
+    background-color: #0c0c0c;
+    color: white;
+    height: 40px;
+    width: 40px;
+}
+
+
 
 .box{
     margin-top: 50px;
@@ -198,4 +218,11 @@
     width: 180px;
     border-radius: 6%;
     border: 1px solid black;
+}
+
+/* Page Buttons */
+
+.active{
+    background-color: white;
+    color: black;
 }
