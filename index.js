@@ -6,6 +6,7 @@ const pokedex = document.getElementById('pokedex');
 
 let minPagRange = 1
 let maxPagRange = 21
+let idRiser = 1 // serve a far coincidere l'id al variare della pagina quando si popola la modale
 
 
 const buttonPageOne = document.getElementById(`pag-one`)
@@ -43,6 +44,7 @@ function buttonSelector(button){
 	minPagRange = (button.value*21)+1
 	maxPagRange = (button.value*21)+21
 	fetchPokemon()
+	idRiser = (button.value*21)+1
 }
 
 
@@ -57,7 +59,7 @@ const fetchPokemon = () => {
 		promises.push(fetch(url).then((res) => res.json()));
 	}
 
-	Promise.all(promises).then((results) => {
+	Promise.all(promises).then((results) => { // per avere l'array di funzioni restituito con lo stesso ordine uso Promise.all
 
 		const pokemon = results.map((result) => ({
 			name: result.name,
@@ -85,7 +87,7 @@ const displayPokemon = (pokemon) => {
 
 		<div id="box" class="col-12 col-md-6 col-lg-4 all-centered ">
 			<div class="box all-centered flex-column text-black ${el.type}"> 
-			<h2 class="pokemon-name">${el.name}</h2>
+			<h2 class="pokemon-name">${el.name}-${el.id}</h2>
 			<img class="card-image" src="${el.image}"/>
 			<span id="${el.id}" class="button material-symbols-outlined i-button">zoom_in</span>
 			</div>
@@ -101,14 +103,15 @@ const displayPokemon = (pokemon) => {
 // #2 - POPULATE MODAL FUNCTION
 // --------------------------------------------------------------------------------
 const populateModalTab = (pokemon) => {
-	const modal = document.getElementById(`modal`)
-	const modalBox = document.getElementById(`modal-box`)
-	const info_buttons = [...document.querySelectorAll(`.button`)]
-	modalBox.classList.add(`inner_modal_box`)
+	
+	const modalBox = document.getElementById(`modal-box`) //seleziono box della modale
+	modalBox.classList.add(`inner_modal_box`) 
+	
+	const info_buttons = [...document.querySelectorAll(`.button`)] 
 
-	info_buttons.map(elm => {
-
-			elm.addEventListener(`click`, () => {
+	info_buttons.map(elm => {	
+		elm.addEventListener(`click`, () => {
+				const modal = document.getElementById(`modal`)
 				modal.classList.remove(`d-none`)
 
 
@@ -118,8 +121,10 @@ const populateModalTab = (pokemon) => {
 					let close_button = document.createElement(`span`)
 					close_button.innerHTML += `<span id="close" class="material-symbols-outlined x-button">close</span>`
 
+					console.log(elm.id);
+					console.log(idRiser);
 
-					if (elm.id == i+1) {
+					if (elm.id == i+idRiser) {
 						compiledModul.innerHTML = `						 
 
 						<h2 class="pokemon-name">${el.name}</h2>
