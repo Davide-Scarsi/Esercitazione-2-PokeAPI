@@ -1,119 +1,130 @@
-.grass_poison{
-    background: linear-gradient(110deg, #4fc73f 55%, #f94bff 55%)
+:root{
+    --normal: rgb(80, 77, 77);
+    --grass: #4fc73f;
+    --fire: red;
+    --poison: #f94bff;
+    --flying: #d3c7d3;
+    --water: rgb(92, 180, 240);
+    --bug: rgb(133, 12, 106);
+    --fairy: rgb(239, 240, 161);
+    --electric: rgb(240, 240, 5);
+}
+
+.grass_poison{  background: linear-gradient(110deg, var(--grass) 55%, var(--poison) 55%)
 }
 .fire{
-    background: red
+    background: var(--fire)
 }
 .fire_flying{
-    background: linear-gradient(110deg, red 55%, #d3c7d3 55%)
+    background: linear-gradient(110deg, var(--fire) 55%, var(--flying) 55%)
 }
 .fire_flying{
-    background: linear-gradient(110deg, red 55%, #d3c7d3 55%)
+    background: linear-gradient(110deg, var(--fire) 55%, var(--flying) 55%)
 }
 .water{
-    background: rgb(92, 180, 240)
+    background: var(--water)
 }
 .bug{
-    background: rgb(133, 12, 106)
+    background: var(--bug)
 }
 .bug_flying{
-    background: linear-gradient(110deg, rgb(133, 12, 106), 55%, #d3c7d3 55%)
+    background: linear-gradient(110deg, var(--bug), 55%, var(--flying) 55%)
 }
 .bug_poison{
-    background: linear-gradient(110deg, rgb(133, 12, 106), 55%, rgb(78, 233, 7) 55%)
+    background: linear-gradient(110deg, var(--bug), 55%,  var(--poison) 55%)
 }
 .normal_flying{
-    background: linear-gradient(110deg, rgb(80, 77, 77) 55%, #d3c7d3 55%)
+    background: linear-gradient(110deg, var(--normal) 55%, var(--flying) 55%)
 }
 .normal{
-    background: rgb(80, 77, 77)
+    background: var(--normal)
 }
 .poison{
-    background: rgb(78, 233, 7)
+    background:  var(--poison)
 }
 .electric{
-    background: rgb(240, 240, 5)
+    background: var(--electric)
 }
 .ground{
     background: rgb(92, 61, 3)
 }
 .poison_ground{
-    background: linear-gradient(110deg,rgb(78, 233, 7) , 55%, rgb(92, 61, 3) 55%)
+    background: linear-gradient(110deg, var(--poison) , 55%, rgb(92, 61, 3) 55%)
 }
 .fairy{
-    background: rgb(239, 240, 161)
+    background: var(--fairy)
 }
 .normal_fairy{
-    background: linear-gradient(110deg, rgb(80, 77, 77) 55%, rgb(239, 240, 161) 55%)
+    background: linear-gradient(110deg, var(--normal) 55%, var(--fairy) 55%)
 }
 .poison_flying{
-    background: linear-gradient(110deg,rgb(78, 233, 7) , 55%, #d3c7d3 55%)
+    background: linear-gradient(110deg, var(--poison) , 55%, var(--flying) 55%)
 }
 .bug_grass{
-    background: linear-gradient(110deg, rgb(133, 12, 106), 55%, rgb(50, 148, 5) 55%)
+    background: linear-gradient(110deg, var(--bug), 55%, rgb(50, 148, 5) 55%)
 }
 .fighting{
     background: rgb(134, 29, 47)
 }
 .water_fighting{
-    background: linear-gradient(110deg, rgb(92, 180, 240) 55%, rgb(134, 29, 47) 55%)
+    background: linear-gradient(110deg, var(--water) 55%, rgb(134, 29, 47) 55%)
 }
 .psychic{
     background: rgb(255, 0, 140)
 }
 .water_poison{
-    background: linear-gradient(110deg, rgb(92, 180, 240) 55%, rgb(78, 233, 7) 55%)
+    background: linear-gradient(110deg, var(--water) 55%,  var(--poison) 55%)
 }
 .rock_ground{
     background: linear-gradient(110deg, rgb(70, 57, 38) 55%, rgb(92, 61, 3) 55%)
 }
 .water_psychic{
-    background: linear-gradient(110deg, rgb(92, 180, 240) 55%, rgb(255, 0, 140) 55%)
+    background: linear-gradient(110deg, var(--water) 55%, rgb(255, 0, 140) 55%)
 }
 .electric_steel{
-    background: linear-gradient(110deg, rgb(240, 240, 5) 55%, rgb(218, 211, 215) 55%)
+    background: linear-gradient(110deg, var(--electric) 55%, rgb(218, 211, 215) 55%)
 }
 .water_ice{
-    background: linear-gradient(110deg, rgb(92, 180, 240) 55%, rgb(122, 208, 248) 55%)
+    background: linear-gradient(110deg, var(--water) 55%, rgb(122, 208, 248) 55%)
 }
 .ghost_poison{
-    background: linear-gradient(110deg, rgb(73, 73, 73) 55%, rgb(78, 233, 7)  55%)
+    background: linear-gradient(110deg, rgb(73, 73, 73) 55%,  var(--poison)  55%)
 }
 .grass_psychic{
-    background: linear-gradient(110deg, #4fc73f 55%, rgb(255, 0, 140) 55%)
+    background: linear-gradient(110deg, var(--grass) 55%, rgb(255, 0, 140) 55%)
 }
 .ground_rock{
     background: linear-gradient(110deg, rgb(92, 61, 3) 55%, rgb(70, 57, 38) 55%)
 }
 .grass{
-    background: #4fc73f
+    background: var(--grass)
 }
 .psychic_fairy{
-    background: linear-gradient(110deg, rgb(255, 0, 140) 55%, rgb(239, 240, 161) 55%)
+    background: linear-gradient(110deg, rgb(255, 0, 140) 55%, var(--fairy) 55%)
 }
 .ice_psychic{
     background: linear-gradient(110deg, rgb(122, 208, 248) 55%, rgb(255, 0, 140) 55%)
 }
 .water_flying{
-    background: linear-gradient(110deg, rgb(92, 180, 240) 55%, #d3c7d3 55%)
+    background: linear-gradient(110deg, var(--water) 55%, var(--flying) 55%)
 }
 .rock_water{
-    background: linear-gradient(110deg, rgb(70, 57, 38) 55%, rgb(92, 180, 240) 55%)
+    background: linear-gradient(110deg, rgb(70, 57, 38) 55%, var(--water) 55%)
 }
 .rock_flying{
-    background: linear-gradient(110deg, rgb(70, 57, 38) 55%, #d3c7d3 55%)
+    background: linear-gradient(110deg, rgb(70, 57, 38) 55%, var(--flying) 55%)
 }
 .ice_flying{
-    background: linear-gradient(110deg, rgb(122, 208, 248) 55%, #d3c7d3 55%)
+    background: linear-gradient(110deg, rgb(122, 208, 248) 55%, var(--flying) 55%)
 }
 .electric_flying{
-    background: linear-gradient(110deg, rgb(240, 240, 5) 55%, #d3c7d3 55%)
+    background: linear-gradient(110deg, var(--electric) 55%, var(--flying) 55%)
 }
 .dragon{
     background: rgb(0, 255, 179)
 }
 .dragon_flying{
-    background: linear-gradient(110deg, rgb(0, 255, 179) 55%, #d3c7d3 55%)
+    background: linear-gradient(110deg, rgb(0, 255, 179) 55%, var(--flying) 55%)
 }
 
 
@@ -132,6 +143,21 @@
     border: 2px solid black;
 }
 
+.pokemon-name{
+    text-transform:uppercase;
+    font-weight: 1000;
+    color: rgb(255, 255, 255);
+    font-size: 23px;
+    /* text-shadow: 0px 0px 10px  rgb(250, 246, 246); */
+    -webkit-text-stroke: 1.5px #0c0c0c;
+}
+
+.i-button{
+    font-size: 50px;
+    color: white;
+    -webkit-text-stroke: 1.5px #0c0c0c;
+}
+
 /* MODAL */
 
 .modal{
@@ -148,17 +174,28 @@
 }
 
 .inner_modal_box{
-    background-color: red;
+    background-color: var(--fire);
     top: 0;
     height: 50%;
     width: 50%;
 }
 
-.material-symbols-outlined{
+.x-button{
     position: absolute;
     z-index: 10;
     top: 5%;
     right: 10%;
     font-size: 50px;
     color: black;
+}
+
+.card-image-modal{
+    height: 200px;
+}
+
+.pokemon-type-box-modal{
+    height: 30px;
+    width: 180px;
+    border-radius: 6%;
+    border: 1px solid black;
 }
