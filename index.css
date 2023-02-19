@@ -145,10 +145,8 @@
 }
 
 .page-button-bar{
-    margin-top: 10px;
     display: flex;
     justify-content: space-between;
-    width: 250px;
 }
 
 .page-button{
@@ -229,6 +227,6 @@
 /* Page Buttons */
 
 .active{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     color: black;
 }

@@ -1,40 +1,72 @@
 const pokedex = document.getElementById('pokedex');
 
 
-// PAGE BUTTONS
+// PAGE BUTTONS GENERATION
 // --------------------------------------------------------------------------------
 
 let minPagRange = 1
 let maxPagRange = 21
 let idRiser = 1 // serve a far coincidere l'id al variare della pagina quando si popola la modale
 
+function generatePageButtons(){
+	const prom = []
+	prom.push(fetch(`https://pokeapi.co/api/v2/pokemon/?limit=2000&offset=0`)
+	.then((res) => res.json()));
+	Promise.all(prom).then((results)=>{
 
-const buttonPageOne = document.getElementById(`pag-one`)
-buttonPageOne.addEventListener((`click`), (e)=>{
-	buttonSelector(buttonPageOne)
-})
+	const count = results[0].count
+	const ButtonsCounter = results[0].count/21
 
-const buttonPageTwo = document.getElementById(`pag-two`)
-buttonPageTwo.addEventListener((`click`), (e)=>{
-	buttonSelector(buttonPageTwo)
-})
+	const buttonsBox = document.getElementById(`buttons-box`)	
 
-const buttonPageThree = document.getElementById(`pag-three`)
-buttonPageThree.addEventListener((`click`), (e)=>{
-	buttonSelector(buttonPageThree)
-})
+	let pageButtonsGroupIncreaser = 0
 
-const buttonPageFour = document.getElementById(`pag-four`)
-buttonPageFour.addEventListener((`click`), (e)=>{
-	buttonSelector(buttonPageFour)
-})
+	
+		for (let i = 0; i < count+1; i++) {
+			
+			let groups = `group-${pageButtonsGroupIncreaser}`
+			
+			
+			if(i % 21 === 0){
 
-const buttonPageFive = document.getElementById(`pag-five`)
-buttonPageFive.addEventListener((`click`), (e)=>{
-	buttonSelector(buttonPageFive)
-})
+				const newButton = document.createElement(`button`)
+				newButton.classList.add(`page-button`, `${groups}`)
+				newButton.value = i/21
+				newButton.innerHTML = `${(i/21)+1}`
+				newButton.addEventListener((`click`), (e)=>{
+					buttonSelector(newButton)
+				})
 
+				if(i>105){
+					newButton.classList.add(`d-none`)
+				}
+					
+				
+				if ((i % 105 === 0)&&(i!==0)) {
+					pageButtonsGroupIncreaser = pageButtonsGroupIncreaser+1
 
+				}
+				
+				buttonsBox.appendChild(newButton)
+				
+				if (i===0) { // regola aggiuntiva per il primo bottone
+					newButton.classList.add(`active`)
+				}				
+				
+			}
+
+		}
+	
+		NextPageFunction(ButtonsCounter)
+	
+	})
+}
+
+// Formula per far coincidere l'output delle pagine con la lista pokemon 
+
+generatePageButtons()
+
+	
 function buttonSelector(button){
 	let selectActive = document.querySelector(`.active`)
 	selectActive.classList.remove(`active`)
@@ -47,10 +79,47 @@ function buttonSelector(button){
 	idRiser = (button.value*21)+1
 }
 
+// --------------------------------------------------------------------------------
+
+// Next Button
+
+function NextPageFunction(ButtonsCounter){
+const NextPagesButton = document.getElementById(`buttonNext`)
+let counter = 1
+
+	
+	NextPagesButton.addEventListener((`click`), (e)=>{
+
+		if ((counter*5)<(ButtonsCounter-1)){
+
+			let AllbuttonSelected = [...document.querySelectorAll(`.group-${counter}`)]
+			AllbuttonSelected.map(el=>{
+				el.classList.remove(`d-none`)	
+				
+			})
+			counter++
+
+			AllbuttonSelected = [...document.querySelectorAll(`.group-${counter-2}`)]
+			AllbuttonSelected.map(el=>{
+				el.classList.add(`d-none`)	
+			
+
+			})
+		}
+	})
+
+}
+
+
+
+
+
+
 
 
 
 // --------------------------------------------------------------------------------
+// Creazione Array di oggetti "pokemon" contenente dati pokemon essenziali
 
 const fetchPokemon = () => {
 	const promises = [];
@@ -121,9 +190,6 @@ const populateModalTab = (pokemon) => {
 					let close_button = document.createElement(`span`)
 					close_button.innerHTML += `<span id="close" class="material-symbols-outlined x-button">close</span>`
 
-					console.log(elm.id);
-					console.log(idRiser);
-
 					if (elm.id == i+idRiser) {
 						compiledModul.innerHTML = `						 
 
@@ -167,10 +233,5 @@ const populateModalTab = (pokemon) => {
 
 
 fetchPokemon()
-
-
-
-
-
 
 
