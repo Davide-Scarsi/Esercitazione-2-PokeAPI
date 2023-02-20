@@ -92,7 +92,7 @@ const BackPagesButton = document.getElementById(`buttonBack`)
 let counter = 1
 
 	
-	NextPagesButton.addEventListener((`click`), (e)=>{
+	NextPagesButton.addEventListener((`click`), ()=>{
 
 		if ((counter)<(ButtonsCounter/5)){
 
@@ -117,7 +117,7 @@ let counter = 1
 
 	})
 
-	BackPagesButton.addEventListener((`click`), (e)=>{
+	BackPagesButton.addEventListener((`click`), ()=>{
 
 		if (counter>=2) {
 
@@ -163,13 +163,13 @@ const fetchPokemon = () => {
 		const pokemon = results.map((result) => ({
 			name: result.name,
 			image: result.sprites['front_default'],
+			imageShiny: result.sprites['front_shiny'],
 			type: result.types.map((type) => type.type.name).join('_'),
 			abilities: result.abilities.map((ability) => ability.ability.name).join(', '),
 			height: result.height/10,
 			weight: result.weight/10,
 			id: result.id
 		}));
-
 
 		displayPokemon(pokemon); //#1
 		populateModalTab(pokemon) //#2	
@@ -201,7 +201,9 @@ const displayPokemon = (pokemon) => {
 
 // #2 - POPULATE MODAL FUNCTION
 // --------------------------------------------------------------------------------
+
 const populateModalTab = (pokemon) => {
+
 	
 	const modalBox = document.getElementById(`modal-box`) //seleziono box della modale
 	modalBox.classList.add(`inner_modal_box`) 
@@ -215,6 +217,7 @@ const populateModalTab = (pokemon) => {
 
 
 				pokemon.map((el, i) => {
+					
 					let compiledModul = document.createElement(`div`)
 					compiledModul.classList.add(`all-centered`,`flex-column`)
 					let close_button = document.createElement(`span`)
