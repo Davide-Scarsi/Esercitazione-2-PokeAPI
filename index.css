@@ -12,8 +12,11 @@
     --fighting: rgb(100, 16, 30);
     --psychic: rgb(255, 0, 140);
     --rock: rgb(66, 56, 42);
-    --steel: rgb(218, 211, 215);
+    --steel: rgb(138, 121, 131);
     --dragon: rgb(0, 255, 179);
+    --dark: rgb(32, 32, 32);
+    --ghost: rgb(36, 14, 97);
+    --ice: rgb(195, 228, 236);
 }
 
 .grass_poison{  background: linear-gradient(110deg, var(--grass) 55%, var(--poison) 55%)
@@ -132,6 +135,100 @@
 .dragon_flying{
     background: linear-gradient(110deg, var(--dragon) 55%, var(--flying) 55%)
 }
+.rock_water{
+    background: linear-gradient(110deg, var(--rock) 55%, var(--water) 55%)
+}
+.water_electric{
+    background: linear-gradient(110deg, var(--water) 55%, var(--electric) 55%)
+}
+.fairy_flying{
+    background: linear-gradient(110deg, var(--fairy) 55%, var(--flying) 55%)
+}
+.psychic_flying{
+    background: linear-gradient(110deg, var(--psychic) 55%, var(--flying) 55%)
+}
+.water_fairy{
+    background: linear-gradient(110deg, var(--water) 55%, var(--fairy) 55%)
+}
+.water_ground{
+    background: linear-gradient(110deg, var(--water) 55%, var(--ground) 55%)
+}
+.dark{
+    background: var(--dark)
+}
+.dark_flying{
+    background: linear-gradient(110deg, var(--dark) 55%, var(--flying) 55%)
+}
+.ghost{
+    background: var(--ghost)
+}
+.normal_psychic{
+    background: linear-gradient(110deg, var(--normal) 55%, var(--psychic) 55%)
+}
+.bug_steel{
+    background: linear-gradient(110deg, var(--bug) 55%, var(--steel) 55%)
+}
+.ground_flying{
+    background: linear-gradient(110deg, var(--ground) 55%, var(--flying) 55%)
+}
+.steel_ground{
+    background: linear-gradient(110deg, var(--steel) 55%, var(--ground) 55%)
+}
+.bug_rock{
+    background: linear-gradient(110deg, var(--bug) 55%, var(--rock) 55%)
+}
+.bug_fighting{
+    background: linear-gradient(110deg, var(--bug) 55%, var(--fighting) 55%)
+}
+.dark_ice{
+    background: linear-gradient(110deg, var(--dark) 55%, var(--ice) 55%)
+}
+.fire_rock{
+    background: linear-gradient(110deg, var(--fire) 55%, var(--rock) 55%)
+}
+.ice_ground{
+    background: linear-gradient(110deg, var(--ice) 55%, var(--ground) 55%)
+}
+.water_rock{
+    background: linear-gradient(110deg, var(--water) 55%, var(--rock) 55%)
+}
+.steel_flying{
+    background: linear-gradient(110deg, var(--steel) 55%, var(--flying) 55%)
+}
+.dark_fire{
+    background: linear-gradient(110deg, var(--dark) 55%, var(--fire) 55%)
+}
+.water_dragon{
+    background: linear-gradient(110deg, var(--water) 55%, var(--dragon) 55%)
+}
+.rock_dark{
+    background: linear-gradient(110deg, var(--rock) 55%, var(--dark) 55%)
+}
+.psychic_grass{
+    background: linear-gradient(110deg, var(--psychic) 55%, var(--grass) 55%)
+}
+.fire_fighting{
+    background: linear-gradient(110deg, var(--fire) 55%, var(--fighting) 55%)
+}
+.water_grass{
+    background: linear-gradient(110deg, var(--water) 55%, var(--grass) 55%)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .all-centered{

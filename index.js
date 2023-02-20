@@ -10,7 +10,7 @@ let idRiser = 1 // serve a far coincidere l'id al variare della pagina quando si
 
 function generatePageButtons(){
 	const prom = []
-	prom.push(fetch(`https://pokeapi.co/api/v2/pokemon/?limit=2000&offset=0`)
+	prom.push(fetch(`https://pokeapi.co/api/v2/pokemon/`)
 	.then((res) => res.json()));
 	Promise.all(prom).then((results)=>{
 
@@ -20,12 +20,12 @@ function generatePageButtons(){
 	const buttonsBox = document.getElementById(`buttons-box`)	
 
 	let pageButtonsGroupIncreaser = 0
+	let buttonCounter = 0
 
 	
 		for (let i = 0; i < count+1; i++) {
 			
 			let groups = `group-${pageButtonsGroupIncreaser}`
-			
 			
 			if(i % 21 === 0){
 
@@ -36,13 +36,14 @@ function generatePageButtons(){
 				newButton.addEventListener((`click`), (e)=>{
 					buttonSelector(newButton)
 				})
+				buttonCounter++
 
-				if(i>105){
+				if(i>104){
 					newButton.classList.add(`d-none`)
 				}
 					
 				
-				if ((i % 105 === 0)&&(i!==0)) {
+				if (buttonCounter % 5 === 0) {
 					pageButtonsGroupIncreaser = pageButtonsGroupIncreaser+1
 
 				}
@@ -80,17 +81,20 @@ function buttonSelector(button){
 }
 
 // --------------------------------------------------------------------------------
+// Back Button
+
 
 // Next Button
 
 function NextPageFunction(ButtonsCounter){
 const NextPagesButton = document.getElementById(`buttonNext`)
+const BackPagesButton = document.getElementById(`buttonBack`)
 let counter = 1
 
 	
 	NextPagesButton.addEventListener((`click`), (e)=>{
 
-		if ((counter*5)<(ButtonsCounter-1)){
+		if ((counter)<(ButtonsCounter/5)){
 
 			let AllbuttonSelected = [...document.querySelectorAll(`.group-${counter}`)]
 			AllbuttonSelected.map(el=>{
@@ -106,16 +110,42 @@ let counter = 1
 
 			})
 		}
+
+		if(counter===2){
+			BackPagesButton.classList.remove(`d-none`) //mostra bottone per tornare indietro con le pagine
+		}
+
+	})
+
+	BackPagesButton.addEventListener((`click`), (e)=>{
+
+		if (counter>=2) {
+
+			let AllbuttonSelected = [...document.querySelectorAll(`.group-${counter-2}`)]
+				AllbuttonSelected.map(el=>{
+					el.classList.remove(`d-none`)	
+					
+				})
+				counter--
+	
+				AllbuttonSelected = [...document.querySelectorAll(`.group-${counter}`)]
+				AllbuttonSelected.map(el=>{
+					el.classList.add(`d-none`)	
+				
+	
+				})
+
+		if(counter===1){
+			BackPagesButton.classList.add(`d-none`) //mostra bottone per tornare indietro con le pagine
+		}
+
+
+		}
+
+
 	})
 
 }
-
-
-
-
-
-
-
 
 
 // --------------------------------------------------------------------------------
@@ -196,7 +226,7 @@ const populateModalTab = (pokemon) => {
 						<h2 class="pokemon-name">${el.name}</h2>
 						<img class="card-image-modal" src="${el.image}"/>
 						<span>ID: ${el.id}</span> 
-						<span>TYPE: ${el.type}</span> 
+						<span>TYPE: ${el.type.split("_").join(" and ")}</span> 
 						<div class="${el.type} pokemon-type-box-modal"></div>
 						<div class="d-flex flex-column">
 							<div class="d-flex">
