@@ -1,4 +1,34 @@
-const pokedex = document.getElementById('pokedex');
+// ----- LEGENDA -----
+// CODICI COLORE RGB POKEMON
+// GENERAZIONE DINAMICA BOTTONI PAGINA - FORMULA PER DETERMINARE I RANGE
+// NEXT BUTTON / BACK BUTTON
+// CRAZIONE OGGETTO "POKEMON" CON TUTTI I DATI ESSENZIALI (DENTRO A UNA PROMISE)
+// FORMULA PER POPOLARE IL SITO ENTRO UN GERTO RANGE
+// FORMULA PER POPOLARE LA MODALE AL CLICK
+
+
+// Oggetto contenente i codici colori dei diversi tipi di Pokemon
+
+const rgbValue = {
+	normal: "rgb(80, 77, 77)",
+    grass: "#52a846",
+    fire: "rgb(153, 34, 34)",
+    poison: "#f94bff",
+    flying: "#d3c7d3",
+    water: "rgb(92, 180, 240)",
+    bug: "rgb(133, 12, 106)",
+    fairy: "rgb(239, 240, 161)",
+    electric: "rgb(240, 240, 5)",
+    ground: "rgb(92, 61, 3)",
+    fighting: "rgb(100, 16, 30)",
+    psychic: "rgb(255, 0, 140)",
+    rock: "rgb(66, 56, 42)",
+    steel: "rgb(138, 121, 131)",
+    dragon: "rgb(0, 255, 179)",
+    dark: "rgb(32, 32, 32)",
+    ghost: "rgb(36, 14, 97)",
+    ice: "rgb(195, 228, 236)"
+}
 
 
 // PAGE BUTTONS GENERATION
@@ -9,21 +39,16 @@ let maxPagRange = 21
 let idRiser = 1 // serve a far coincidere l'id al variare della pagina quando si popola la modale
 
 function generatePageButtons(){
-	const prom = []
-	prom.push(fetch(`https://pokeapi.co/api/v2/pokemon/`)
-	.then((res) => res.json()));
-	Promise.all(prom).then((results)=>{
-
-	const count = results[0].count
-	const ButtonsCounter = results[0].count/21
+	
+	const count = 1008
+	const ButtonsCounter = 1008/21
 
 	const buttonsBox = document.getElementById(`buttons-box`)	
 
 	let pageButtonsGroupIncreaser = 0
 	let buttonCounter = 0
-
 	
-		for (let i = 0; i < count+1; i++) {
+		for (let i = 0; i < count; i++) {
 			
 			let groups = `group-${pageButtonsGroupIncreaser}`
 			
@@ -40,35 +65,27 @@ function generatePageButtons(){
 
 				if(i>104){
 					newButton.classList.add(`d-none`)
-				}
-					
+				}				
 				
 				if (buttonCounter % 5 === 0) {
 					pageButtonsGroupIncreaser = pageButtonsGroupIncreaser+1
-
 				}
 				
 				buttonsBox.appendChild(newButton)
 				
 				if (i===0) { // regola aggiuntiva per il primo bottone
 					newButton.classList.add(`active`)
-				}				
-				
+				}							
 			}
-
 		}
 	
 		NextPageFunction(ButtonsCounter)
 	
-	})
 }
-
-// Formula per far coincidere l'output delle pagine con la lista pokemon 
 
 generatePageButtons()
 
-	
-function buttonSelector(button){
+function buttonSelector(button){ // Formula per far coincidere l'output delle pagine con la lista pokemon 
 	let selectActive = document.querySelector(`.active`)
 	selectActive.classList.remove(`active`)
 	button.classList.add(`active`)
@@ -81,8 +98,6 @@ function buttonSelector(button){
 }
 
 // --------------------------------------------------------------------------------
-// Back Button
-
 
 // Next Button
 
@@ -90,7 +105,6 @@ function NextPageFunction(ButtonsCounter){
 const NextPagesButton = document.getElementById(`buttonNext`)
 const BackPagesButton = document.getElementById(`buttonBack`)
 let counter = 1
-
 	
 	NextPagesButton.addEventListener((`click`), ()=>{
 
@@ -117,6 +131,8 @@ let counter = 1
 
 	})
 
+	// Back Button
+
 	BackPagesButton.addEventListener((`click`), ()=>{
 
 		if (counter>=2) {
@@ -139,9 +155,7 @@ let counter = 1
 			BackPagesButton.classList.add(`d-none`) //mostra bottone per tornare indietro con le pagine
 		}
 
-
 		}
-
 
 	})
 
@@ -151,6 +165,7 @@ let counter = 1
 // --------------------------------------------------------------------------------
 // Creazione Array di oggetti "pokemon" contenente dati pokemon essenziali
 
+const pokedex = document.getElementById('pokedex');
 const fetchPokemon = () => {
 	const promises = [];
 	for (let i = minPagRange; i <= maxPagRange; i++) {
@@ -171,11 +186,24 @@ const fetchPokemon = () => {
 			id: result.id
 		}));
 
+		pokemon.map(el=>{ // creazione di colori RGB per ogni tipo
+			let arrType = Array(...el.type.split("_"))
+			if (arrType.length === 1){arrType = Array(arrType[0],arrType[0])}
+			el.rgbArrayType = arrType.map(el =>  rgbValue[el]) 
+		})
+
+
+
 		displayPokemon(pokemon); //#1
 		populateModalTab(pokemon) //#2	
 
 	});
-};
+}
+
+fetchPokemon()
+
+
+
 
 // #1 - DISPLAY POKEMON FUNCTION
 // --------------------------------------------------------------------------------
@@ -185,7 +213,7 @@ const displayPokemon = (pokemon) => {
 			(el) => `
 
 		<div id="box" class="col-12 col-md-6 col-lg-4 all-centered ">
-			<div class="box all-centered flex-column text-black ${el.type}"> 
+			<div style="background: linear-gradient(110deg, ${el.rgbArrayType[0]} 55%, ${el.rgbArrayType[1]} 55%)" class="box all-centered flex-column text-black}"> 
 			<h2 class="pokemon-name">${el.name}</h2>
 			<img class="card-image" src="${el.image}"/>
 			<span id="${el.id}" class="button material-symbols-outlined i-button">zoom_in</span>
@@ -230,7 +258,7 @@ const populateModalTab = (pokemon) => {
 						<img class="card-image-modal" src="${el.image}"/>
 						<span>ID: ${el.id}</span> 
 						<span>TYPE: ${el.type.split("_").join(" and ")}</span> 
-						<div class="${el.type} pokemon-type-box-modal"></div>
+						<div style="background: linear-gradient(110deg, ${el.rgbArrayType[0]} 55%, ${el.rgbArrayType[1]} 55%)" class="pokemon-type-box-modal"></div>
 						<div class="d-flex flex-column">
 							<div class="d-flex">
 								<span class="m-2">ABILITIES:</span>
@@ -263,8 +291,5 @@ const populateModalTab = (pokemon) => {
 
 
 
-
-
-fetchPokemon()
 
 
