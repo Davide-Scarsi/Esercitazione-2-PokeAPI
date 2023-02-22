@@ -169,5 +169,10 @@
             color: rgb(9, 210, 236);
             text-shadow: 0x 0px 20px rgb(187, 245, 242);
     }
+
+    .poke-info-modal{
+        max-width: 275px;
+        font-size: 12px;
+    }
     
 }
