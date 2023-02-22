@@ -213,7 +213,7 @@ const displayPokemon = (pokemon) => {
 			(el) => `
 
 		<div id="box" class="col-12 col-md-6 col-lg-4 all-centered ">
-			<div style="background: linear-gradient(110deg, ${el.rgbArrayType[0]} 55%, ${el.rgbArrayType[1]} 55%)" class="box all-centered flex-column text-black}"> 
+			<div style="background: linear-gradient(110deg, ${el.rgbArrayType[0]} 55%, ${el.rgbArrayType[1]} 55%)" class="main-card-image all-centered flex-column }"> 
 			<h2 class="pokemon-name">${el.name}</h2>
 			<img class="card-image" src="${el.image}"/>
 			<span id="${el.id}" class="button material-symbols-outlined i-button">zoom_in</span>
@@ -249,17 +249,29 @@ const populateModalTab = (pokemon) => {
 					let compiledModul = document.createElement(`div`)
 					compiledModul.classList.add(`all-centered`,`flex-column`)
 					let close_button = document.createElement(`span`)
-					close_button.innerHTML += `<span id="close" class="material-symbols-outlined x-button">close</span>`
+					close_button.id = `close`
+					close_button.classList.add(`material-symbols-outlined`,`x-button`)
+					close_button.innerHTML += `close`
+
+					let shiny_button = document.createElement(`span`)
+					shiny_button.classList.add(`material-symbols-outlined`,`shiny-button`)
+					shiny_button.innerHTML += `diamond`
+
+
+
+
+					
 
 					if (elm.id == i+idRiser) {
 						compiledModul.innerHTML = `						 
 
 						<h2 class="pokemon-name">${el.name}</h2>
-						<img class="card-image-modal" src="${el.image}"/>
+						<img id="classicImg"class="card-image-modal" src="${el.image}"/>					
+						<img id="shinyImg" class="card-image-modal d-none" src="${el.imageShiny}"/>
 						<span>ID: ${el.id}</span> 
 						<span>TYPE: ${el.type.split("_").join(" and ")}</span> 
 						<div style="background: linear-gradient(110deg, ${el.rgbArrayType[0]} 55%, ${el.rgbArrayType[1]} 55%)" class="pokemon-type-box-modal"></div>
-						<div class="d-flex flex-column">
+						<div class="d-flex flex-column poke-info-modal">
 							<div class="d-flex">
 								<span class="m-2">ABILITIES:</span>
 								<span class="m-2"> ${el.abilities}</span> 
@@ -276,11 +288,30 @@ const populateModalTab = (pokemon) => {
 
 						`	
 						modalBox.appendChild(close_button)
+						modalBox.appendChild(shiny_button)
 						modalBox.appendChild(compiledModul)
 
 						close_button.addEventListener(`click`, () => {
 							modal.classList.add(`d-none`)
 							modalBox.innerHTML = ""
+						})
+						
+						let toggle = false
+						shiny_button.addEventListener(`click`, () => {
+							if (toggle===false) {
+								let classicImg = document.getElementById(`classicImg`)
+								classicImg.classList.add(`d-none`)
+								let shinyImg = document.getElementById(`shinyImg`)
+								shiny_button.classList.add(`active-toggle`)
+								shinyImg.classList.remove(`d-none`)
+								toggle = true
+								
+							} else if (toggle===true){
+								classicImg.classList.remove(`d-none`)
+								shiny_button.classList.remove(`active-toggle`)
+								shinyImg.classList.add(`d-none`)
+								toggle = false
+							}
 						})
 					}
 				})
