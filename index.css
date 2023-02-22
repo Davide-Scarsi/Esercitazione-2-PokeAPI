@@ -98,7 +98,7 @@
     color: black;
 }
 
-.x-button:hover, .shiny-button:hover{
+.x-button:hover{
     color: white;
     text-shadow: 0px 0px 10px rgb(255, 255, 255);
 }
@@ -112,7 +112,7 @@
     color: black;
 }
 
-.active-toggle{
+.active-toggle, .shiny-button:hover{
         color: rgb(6, 193, 240);
         text-shadow: 0px 0px 50px rgb(5, 240, 228);
 }
@@ -145,4 +145,29 @@
 .active{
     background-color: rgb(255, 255, 255);
     color: black;
+}
+
+
+
+@media screen and (max-width: 772px) {
+
+    .x-button{
+        top: -12%;
+        right: 5%;
+        color: rgb(255, 255, 255);
+    }
+
+    
+    .shiny-button{
+        top: auto;
+        bottom: -12%;
+        right: 5%;
+        color: rgb(245, 243, 243);
+    }
+    
+    .active-toggle, .shiny-button:hover{
+            color: rgb(9, 210, 236);
+            text-shadow: 0x 0px 20px rgb(187, 245, 242);
+    }
+    
 }
